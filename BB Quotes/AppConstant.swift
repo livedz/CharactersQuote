@@ -46,12 +46,47 @@ public enum AppURLS {
 
 struct TabDetails: Identifiable {
     var id = UUID()
-    var name: String
-    var image: String
+    var type: tabType
+    init(type: tabType) {
+        self.type = type
+    }
     
-    init(name: String, image: String) {
-        self.name = name
-        self.image = image
+    func getTitle() -> String {
+        switch type {
+        case .breakingBad:
+            return "Breaking Bad"
+        case .betterCallSaul:
+            return "Better Call Saul"
+        case .elCamino:
+            return "El Camino"
+        }
+    }
+    
+    func getImage() -> String {
+        switch type {
+        case .breakingBad:
+            return "tortoise"
+        case .betterCallSaul:
+            return "briefcase"
+        case .elCamino:
+            return "car"
+        }
+    }
+    
+    func getBackGroundImage() -> String {
+        switch type {
+        case .breakingBad:
+            return "Image1"
+        case .betterCallSaul:
+            return "Image2"
+        case .elCamino:
+            return "elcamino"
+        }
     }
 }
 
+public enum tabType {
+    case breakingBad
+    case betterCallSaul
+    case elCamino
+}
