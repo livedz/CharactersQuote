@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(iOS 17.0, *)
 @Observable
 @MainActor
 class ViewModel {
@@ -14,7 +15,8 @@ class ViewModel {
    enum FetchStatus {
         case notStarted
         case fetching
-        case success
+        case successQuote
+        case successEpisode
         case failed(error: Error)
    }
    private(set) var status: FetchStatus = .notStarted
@@ -22,6 +24,7 @@ class ViewModel {
    public var quote: Quote
    public var character: Char
    public var death: Death
+    public var episodeDetails: Episode
     
     init() {
         let jsonDecoder = JSONDecoder()
@@ -30,15 +33,31 @@ class ViewModel {
         self.quote = AppURLS.loadJSON("samplequote") ?? Quote.mock
         self.character = AppURLS.loadJSON("samplecharacter") ?? Char.mock
         self.death = AppURLS.loadJSON("sampledeath") ?? Death.mock
+        self.episodeDetails = AppURLS.loadJSON("sampleepisode") ?? Episode.mock
     }
     
-    func getData(for show: String) async {
+    func getQuoterData(for show: String) async {
         status = .fetching
         do {
             quote = try await fetcher.fetchQuotes(from: show)
             character = try await fetcher.fetchCharacter(quote.character)
             character.death = try await fetcher.fetchDeath(for: character.name)
-            status = .success
+            if let episodeData = try await fetcher.fetchEpisode(for: show) {
+                episodeDetails = episodeData
+            }
+            status = .successQuote
+        } catch {
+            status = .failed(error: error)
+        }
+    }
+    
+    func getEpisodeData(for show: String) async {
+        status = .fetching
+        do {
+            if let episodeData = try await fetcher.fetchEpisode(for: show) {
+                episodeDetails = episodeData
+            }
+            status = .successEpisode
         } catch {
             status = .failed(error: error)
         }
@@ -85,5 +104,27 @@ extension Death {
         season: 5,
         episode: 16,
         production: "Breaking Bad"
+    )
+}
+
+extension Episode {
+    
+    static let mock = Episode(
+        id: 1,
+        title: "Pilot",
+        production: "Breaking Bad",
+        episode: 101,
+        image: "https://static.wikia.nocookie.net/breakingbad/images/b/b1/BB_101_S.jpg/revision/latest?cb=20170418193804",
+        synopsis: "Desperate to secure his family's financial future and finally free from the fear that had always inhibited him, Walt teams up with a former student to turn a used RV into a mobile drug lab.",
+        writtenBy: "Vince Gilligan",
+        directedBy: "Vince Gilligan",
+        airDate: "01-20-2008",
+        characters: [
+            "Walter White",
+            "Jesse Pinkman",
+            "Skyler White",
+            "Walter Jr.",
+            "Ben",
+            "Chad"]
     )
 }

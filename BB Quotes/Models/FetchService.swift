@@ -136,4 +136,25 @@ struct FetchService {
             
             return deaths.first { $0.character == character }
         }
+    
+    func fetchEpisode(for show: String) async throws -> Episode? {
+        var fetchURL = AppURLConstant.baseURL
+            .appendingPathComponent(AppURLConstant.episode)
+        
+        fetchURL.append(queryItems: [
+            URLQueryItem(name: AppURLConstant.productionURL, value: show)
+        ])
+        
+        let (data, response) = try await URLSession.shared.data(from: fetchURL)
+        
+        guard let response = response as? HTTPURLResponse,
+              response.statusCode == 200 else {
+            throw FetchError.badResponse
+        }
+        
+        let decoder = JSONDecoder()
+        let episodes = try decoder.decode([Episode].self, from: data)
+      
+        return episodes.randomElement()
+    }
 }

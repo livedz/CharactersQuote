@@ -12,8 +12,9 @@ struct BB_QuotesApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                MainView(tabViewList: [TabDetails(name: "Breaking Bad", image: "tortoise"),
-                                  TabDetails(name: "Better Call Saul", image: "briefcase")])
+                MainView(tabViewList: [TabDetails(type: .breakingBad),
+                                  TabDetails(type: .betterCallSaul),
+                                  TabDetails(type: .elCamino)])
             }
         }
     }

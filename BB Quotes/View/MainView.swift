@@ -11,8 +11,8 @@ struct MainView: View {
     var body: some View {
         TabView {
             ForEach(tabViewList) { tab in
-                Tab(tab.name,systemImage: tab.image) {
-                    QuoteView(show: tab.name)
+                Tab(tab.getTitle(),systemImage: tab.getImage()) {
+                    FetchView(showType: tab)
                 }
             }
         }
@@ -22,6 +22,7 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(tabViewList: [TabDetails(name: "Breaking Bad", image: "tortoise"),
-                      TabDetails(name: "Better Call Saul", image: "briefcase")])
+    MainView(tabViewList: [TabDetails(type: .breakingBad),
+                           TabDetails(type: .betterCallSaul),
+                           TabDetails(type: .elCamino)])
 }

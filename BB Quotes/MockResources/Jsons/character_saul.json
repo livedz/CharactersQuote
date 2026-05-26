@@ -1,0 +1,18 @@
+[{
+    "character_id": 3,
+    "name": "Saul Goodman",
+    "birthday": "11-12-1960",
+    "occupations": ["Criminal Lawyer", "Cinnabon Manager"],
+    "images": [
+        "https://static.wikia.nocookie.net/breakingbad/images/a/a9/Better_Call_Saul_S3_Saul.jpg/revision/latest?cb=20170508171659"
+    ],
+    "full_name": "James Morgan McGill",
+    "aliases": ["Saul Goodman", "Jimmy McGill", "Gene Takavic"],
+    "status": "Alive",
+    "appearance": {
+        "breaking_bad": [2,3,4,5],
+        "better_call_saul": [1,2,3,4,5,6]
+    },
+    "portrayed_by": "Bob Odenkirk",
+    "productions": ["Breaking Bad", "Better Call Saul"]
+}]

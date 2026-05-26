@@ -1,0 +1,18 @@
+[{
+    "character_id": 2,
+    "name": "Jesse Pinkman",
+    "birthday": "09-24-1984",
+    "occupations": ["Meth Cook", "Drug Dealer"],
+    "images": [
+        "https://static.wikia.nocookie.net/breakingbad/images/9/95/Season_5_-_Jesse_Pinkman.jpg/revision/latest?cb=20130704033913"
+    ],
+    "full_name": "Jesse Bruce Pinkman",
+    "aliases": ["Cap'n Cook", "Jesse"],
+    "status": "Alive",
+    "appearance": {
+        "breaking_bad": [1,2,3,4,5],
+        "el_camino": [1]
+    },
+    "portrayed_by": "Aaron Paul",
+    "productions": ["Breaking Bad", "El Camino"]
+}]

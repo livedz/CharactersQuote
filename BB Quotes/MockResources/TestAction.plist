@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+    TestAction.plist
+    Add this file to your BB Quotes app target (not the MockFileServer package).
+    Place it inside MockResources/ folder in your project.
+
+    Structure:
+    Each key = operation name (matched by MockURLProtocol from the URL path)
+    Each value = dictionary of alias → actual JSON filename
+
+    Operations:
+    - GetQuote      → /api/quotes/random
+    - GetCharacter  → /api/characters
+    - GetDeaths     → /api/deaths
+    - GetEpisode    → /api/episodes
+-->
+<dict>
+
+    <key>GetQuote</key>
+    <dict>
+        <key>default</key>
+        <string>quote_bb</string>
+        <key>quoteWalter</key>
+        <string>quote_bb</string>
+        <key>quoteSaul</key>
+        <string>quote_bcs</string>
+        <key>quoteElCamino</key>
+        <string>quote_elcamino</string>
+    </dict>
+
+    <key>GetCharacter</key>
+    <dict>
+        <key>default</key>
+        <string>character_walter</string>
+        <key>characterWalter</key>
+        <string>character_walter</string>
+        <key>characterJesse</key>
+        <string>character_jesse</string>
+        <key>characterSaul</key>
+        <string>character_saul</string>
+    </dict>
+
+    <key>GetDeaths</key>
+    <dict>
+        <key>default</key>
+        <string>deaths_all</string>
+        <key>deathsAll</key>
+        <string>deaths_all</string>
+        <key>deathsEmpty</key>
+        <string>deaths_empty</string>
+    </dict>
+
+    <key>GetEpisode</key>
+    <dict>
+        <key>default</key>
+        <string>episode_bb</string>
+        <key>episodeBB</key>
+        <string>episode_bb</string>
+        <key>episodeBCS</key>
+        <string>episode_bcs</string>
+        <key>episodeElCamino</key>
+        <string>episode_elcamino</string>
+    </dict>
+
+</dict>
+</plist>

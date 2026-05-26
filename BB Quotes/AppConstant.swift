@@ -14,6 +14,7 @@ public enum AppURLConstant {
     public static let characters = "characters"
     public static let name = "name"
     public static let deaths = "deaths"
+    public static let episode = "episodes"
 }
 
 public enum AppURLS {

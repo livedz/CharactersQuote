@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+    TestPlan.plist
+    Add this file to your BB Quotes app target.
+    Place it inside MockResources/ folder in your project.
+
+    Each top-level key = test plan name (used in loadTestPlan("..."))
+    Each plan wires operations to specific JSON file aliases from TestAction.plist
+-->
+<dict>
+
+    <!-- Happy path: Breaking Bad quote + Walter White character loads successfully -->
+    <key>BBQuoteSuccess</key>
+    <dict>
+        <key>GetQuote</key>
+        <dict>
+            <key>default</key>
+            <string>quoteWalter</string>
+        </dict>
+        <key>GetCharacter</key>
+        <dict>
+            <key>default</key>
+            <string>characterWalter</string>
+        </dict>
+        <key>GetDeaths</key>
+        <dict>
+            <key>default</key>
+            <string>deathsAll</string>
+        </dict>
+        <key>GetEpisode</key>
+        <dict>
+            <key>default</key>
+            <string>episodeBB</string>
+        </dict>
+    </dict>
+
+    <!-- Better Call Saul tab: Saul quote + character -->
+    <key>BCSQuoteSuccess</key>
+    <dict>
+        <key>GetQuote</key>
+        <dict>
+            <key>default</key>
+            <string>quoteSaul</string>
+        </dict>
+        <key>GetCharacter</key>
+        <dict>
+            <key>default</key>
+            <string>characterSaul</string>
+        </dict>
+        <key>GetDeaths</key>
+        <dict>
+            <key>default</key>
+            <string>deathsEmpty</string>
+        </dict>
+        <key>GetEpisode</key>
+        <dict>
+            <key>default</key>
+            <string>episodeBCS</string>
+        </dict>
+    </dict>
+
+    <!-- El Camino tab -->
+    <key>ElCaminoQuoteSuccess</key>
+    <dict>
+        <key>GetQuote</key>
+        <dict>
+            <key>default</key>
+            <string>quoteElCamino</string>
+        </dict>
+        <key>GetCharacter</key>
+        <dict>
+            <key>default</key>
+            <string>characterJesse</string>
+        </dict>
+        <key>GetDeaths</key>
+        <dict>
+            <key>default</key>
+            <string>deathsAll</string>
+        </dict>
+        <key>GetEpisode</key>
+        <dict>
+            <key>default</key>
+            <string>episodeElCamino</string>
+        </dict>
+    </dict>
+
+    <!-- Episode only flow — tap Get Random Episode button -->
+    <key>BBEpisodeSuccess</key>
+    <dict>
+        <key>GetEpisode</key>
+        <dict>
+            <key>default</key>
+            <string>episodeBB</string>
+        </dict>
+    </dict>
+
+    <!-- Network error simulation -->
+    <key>NetworkError</key>
+    <dict>
+        <key>GetQuote</key>
+        <dict>
+            <key>default</key>
+            <string>quoteWalter</string>
+            <key>status_code</key>
+            <integer>500</integer>
+        </dict>
+    </dict>
+
+    <!-- Sequential: quote loads, then episode loads on second tap -->
+    <key>QuoteThenEpisode</key>
+    <dict>
+        <key>GetQuote</key>
+        <dict>
+            <key>default</key>
+            <string>quoteWalter</string>
+        </dict>
+        <key>GetCharacter</key>
+        <dict>
+            <key>default</key>
+            <string>characterWalter</string>
+        </dict>
+        <key>GetDeaths</key>
+        <dict>
+            <key>default</key>
+            <string>deathsAll</string>
+        </dict>
+        <key>GetEpisode</key>
+        <dict>
+            <key>default</key>
+            <string>episodeBB</string>
+        </dict>
+    </dict>
+
+</dict>
+</plist>
